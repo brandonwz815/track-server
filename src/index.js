@@ -7,13 +7,14 @@ const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
-app.use(bodyParser);
+app.use(bodyParser.json()); // 
 app.use(authRoutes);
 
-const mongoUri = 'mongodb+srv://admin:passwordpassword@cluster0-vxkoh.mongodb.net/<dbname>?retryWrites=true&w=majority';
+const mongoUri = 'mongodb+srv://admin:passwordpassword@cluster0-ii7ch.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
-  useCreateIndex: true
+  useCreateIndex: true,
+  useUnifiedTopology: true
 });
 mongoose.connection.on('connected', () => {
   console.log('Connected to mongo instance')
